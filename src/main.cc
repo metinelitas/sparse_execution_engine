@@ -134,7 +134,7 @@ composite_t eval_expression_tree(node *root)
     return sparse_sum(l_val, r_val); // default
 }
 
-void printParamter(const composite_t& param) 
+void printParameter(const composite_t& param) 
 {
     for (auto x : param)
     {
@@ -168,11 +168,11 @@ int main()
 
 
     std::cout << "b \n -------" << std::endl;
-    printParamter(b);
+    printParameter(b);
     std::cout << "c \n -------" << std::endl;
-    printParamter(c);
+    printParameter(c);
     std::cout << "d \n -------" << std::endl;
-    printParamter(d);
+    printParameter(d);
 
     // create an expression tree
     node *root = new node("+");
@@ -184,7 +184,7 @@ int main()
     composite_t result = eval_expression_tree(root);
 
     std::cout << "result \n -------" << std::endl;
-    printParamter(result);
+    printParameter(result);
 
     delete (root);
 

@@ -38,3 +38,10 @@ Run following commands from main folder
 ## Run
 
     ./build/sparse_execution_engine
+
+## Test against custom inputs
+
+Run tools/generate_inputs.py to generate custom input values. 
+
+
+
