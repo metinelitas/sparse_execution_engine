@@ -5,9 +5,8 @@ using index_t = std::pair<int, int>;
 
 using composite_t = std::map<index_t, double>;
 
-class node
+struct node
 {
-public:
     std::string op;
     composite_t data;
 
