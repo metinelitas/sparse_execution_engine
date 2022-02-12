@@ -109,7 +109,7 @@ int main()
     
     d.insert({std::make_pair(1,7) , 10});
     d.insert({std::make_pair(2,10) , 7});
-    d.insert({std::make_pair(15,15) , 1});
+    d.insert({std::make_pair(15,15) , 100});
     d.insert({std::make_pair(20,20) , 2});
 
 
@@ -145,6 +145,12 @@ int main()
         root->right = new node(std::move(b));
         
         composite_t result = engine.eval(root);
+
+        std::cout << "result \n -------" << std::endl;
+        for (auto val : result)
+        { 
+            std::cout << "index: [" << val.first.first << "] [" << val.first.second << "] Val = " << val.second << std::endl;
+        }
 
         delete (root);
 
