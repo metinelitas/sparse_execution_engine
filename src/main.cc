@@ -22,11 +22,11 @@ public:
     }
 };
 
-composite_t sparse_sum(composite_t lhs, composite_t rhs)
+composite_t sparse_sum(const composite_t& lhs, const composite_t& rhs)
 {
     composite_t result;
-    composite_t::iterator lhs_it = lhs.begin();
-    composite_t::iterator rhs_it = rhs.begin();
+    composite_t::const_iterator lhs_it = lhs.begin();
+    composite_t::const_iterator rhs_it = rhs.begin();
     index_t max_index = std::make_pair(INT_MAX, INT_MAX);
     index_t lhs_index;
     index_t rhs_index;
@@ -66,11 +66,11 @@ composite_t sparse_sum(composite_t lhs, composite_t rhs)
     return result;
 }
 
-composite_t sparse_multiply(composite_t lhs, composite_t rhs)
+composite_t sparse_multiply(const composite_t& lhs, const composite_t& rhs)
 {
     composite_t result;
-    composite_t::iterator lhs_it = lhs.begin();
-    composite_t::iterator rhs_it = rhs.begin();
+    composite_t::const_iterator lhs_it = lhs.begin();
+    composite_t::const_iterator rhs_it = rhs.begin();
     index_t max_index = std::make_pair(INT_MAX, INT_MAX);
     index_t lhs_index;
     index_t rhs_index;
@@ -134,45 +134,45 @@ composite_t eval_expression_tree(node *root)
     return sparse_sum(l_val, r_val); // default
 }
 
+void printParamter(const composite_t& param) 
+{
+    for (auto x : param)
+    {
+        std::cout << "index: [" << x.first.first << "][" << x.first.second << "]\t Val = " << x.second << std::endl;
+    }
+}
+
 int main()
 {
     composite_t b;
     composite_t c;
     composite_t d;
 
-    b.insert({std::make_pair(1, 2), 3.1});
-    b.insert({std::make_pair(2, 5), 7.1});
-    b.insert({std::make_pair(15, 15), 8.1});
+    b.insert({std::make_pair(0,0), 728.49});
+    b.insert({std::make_pair(1,0), 599.27});
+    b.insert({std::make_pair(1,1), 833.81});
+    b.insert({std::make_pair(1,2), 919.39});
+    b.insert({std::make_pair(1,3), 688.53});
+    b.insert({std::make_pair(1,4), 643.26});
+    b.insert({std::make_pair(1,5), 227.8});
+    b.insert({std::make_pair(1,6), 863.85});
+    b.insert({std::make_pair(2,0), 277.14});
+    b.insert({std::make_pair(2,1), 281.43});
+    c.insert({std::make_pair(0,0), 707.53});
+    c.insert({std::make_pair(1,0), 156.0});
+    c.insert({std::make_pair(1,1), 649.25});
+    c.insert({std::make_pair(1,2), 800.6});
+    c.insert({std::make_pair(1,3), 762.59});
+    d.insert({std::make_pair(0,0), 822.69});
+    d.insert({std::make_pair(0,1), 269.2});
 
-    c.insert({std::make_pair(1, 3), 10.1});
-    c.insert({std::make_pair(1, 10), 7.1});
-    c.insert({std::make_pair(15, 15), 9.2});
-    c.insert({std::make_pair(20, 20), 1.3});
 
-    d.insert({std::make_pair(1, 7), 10.2});
-    d.insert({std::make_pair(2, 10), 7.5});
-    d.insert({std::make_pair(15, 15), 100.6});
-    d.insert({std::make_pair(20, 20), 2.7});
-
-    {
-        std::cout << "b \n -------" << std::endl;
-        for (auto val : b)
-        {
-            std::cout << "index: [" << val.first.first << "] [" << val.first.second << "] Val = " << val.second << std::endl;
-        }
-
-        std::cout << "c \n -------" << std::endl;
-        for (auto val : c)
-        {
-            std::cout << "index: [" << val.first.first << "] [" << val.first.second << "] Val = " << val.second << std::endl;
-        }
-
-        std::cout << "d \n -------" << std::endl;
-        for (auto val : d)
-        {
-            std::cout << "index: [" << val.first.first << "] [" << val.first.second << "] Val = " << val.second << std::endl;
-        }
-    }
+    std::cout << "b \n -------" << std::endl;
+    printParamter(b);
+    std::cout << "c \n -------" << std::endl;
+    printParamter(c);
+    std::cout << "d \n -------" << std::endl;
+    printParamter(d);
 
     // create an expression tree
     node *root = new node("+");
@@ -184,10 +184,7 @@ int main()
     composite_t result = eval_expression_tree(root);
 
     std::cout << "result \n -------" << std::endl;
-    for (auto val : result)
-    {
-        std::cout << "index: [" << val.first.first << "] [" << val.first.second << "] Val = " << val.second << std::endl;
-    }
+    printParamter(result);
 
     delete (root);
 
