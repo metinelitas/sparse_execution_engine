@@ -21,7 +21,7 @@ struct node
     }
 };
 
-composite_t sparse_sum(const composite_t& lhs, const composite_t& rhs)
+composite_t sparse_sum(const composite_t &lhs, const composite_t &rhs)
 {
     composite_t result;
     composite_t::const_iterator lhs_it = lhs.begin();
@@ -65,7 +65,7 @@ composite_t sparse_sum(const composite_t& lhs, const composite_t& rhs)
     return result;
 }
 
-composite_t sparse_multiply(const composite_t& lhs, const composite_t& rhs)
+composite_t sparse_multiply(const composite_t &lhs, const composite_t &rhs)
 {
     composite_t result;
     composite_t::const_iterator lhs_it = lhs.begin();
@@ -133,7 +133,7 @@ composite_t eval_expression_tree(node *root)
     return sparse_sum(l_val, r_val); // default
 }
 
-void printParameter(const composite_t& param) 
+void printParameter(const composite_t &param)
 {
     for (auto x : param)
     {
@@ -147,24 +147,23 @@ int main()
     composite_t c;
     composite_t d;
 
-    b.insert({std::make_pair(0,0), 728.49});
-    b.insert({std::make_pair(1,0), 599.27});
-    b.insert({std::make_pair(1,1), 833.81});
-    b.insert({std::make_pair(1,2), 919.39});
-    b.insert({std::make_pair(1,3), 688.53});
-    b.insert({std::make_pair(1,4), 643.26});
-    b.insert({std::make_pair(1,5), 227.8});
-    b.insert({std::make_pair(1,6), 863.85});
-    b.insert({std::make_pair(2,0), 277.14});
-    b.insert({std::make_pair(2,1), 281.43});
-    c.insert({std::make_pair(0,0), 707.53});
-    c.insert({std::make_pair(1,0), 156.0});
-    c.insert({std::make_pair(1,1), 649.25});
-    c.insert({std::make_pair(1,2), 800.6});
-    c.insert({std::make_pair(1,3), 762.59});
-    d.insert({std::make_pair(0,0), 822.69});
-    d.insert({std::make_pair(0,1), 269.2});
-
+    b.insert({std::make_pair(0, 0), 728.49});
+    b.insert({std::make_pair(1, 0), 599.27});
+    b.insert({std::make_pair(1, 1), 833.81});
+    b.insert({std::make_pair(1, 2), 919.39});
+    b.insert({std::make_pair(1, 3), 688.53});
+    b.insert({std::make_pair(1, 4), 643.26});
+    b.insert({std::make_pair(1, 5), 227.8});
+    b.insert({std::make_pair(1, 6), 863.85});
+    b.insert({std::make_pair(2, 0), 277.14});
+    b.insert({std::make_pair(2, 1), 281.43});
+    c.insert({std::make_pair(0, 0), 707.53});
+    c.insert({std::make_pair(1, 0), 156.0});
+    c.insert({std::make_pair(1, 1), 649.25});
+    c.insert({std::make_pair(1, 2), 800.6});
+    c.insert({std::make_pair(1, 3), 762.59});
+    d.insert({std::make_pair(0, 0), 822.69});
+    d.insert({std::make_pair(0, 1), 269.2});
 
     std::cout << "b \n -------" << std::endl;
     printParameter(b);
